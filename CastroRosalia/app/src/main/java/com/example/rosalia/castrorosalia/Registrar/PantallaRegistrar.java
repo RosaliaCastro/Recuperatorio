@@ -14,10 +14,6 @@ public class PantallaRegistrar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_registrar);
 
-        //crear unos usuarios para validar.
-
-
-
         ModeloRegistrar modeloRegistrar = new  ModeloRegistrar();
         ControladorRegistrar controladorRegistrar= new ControladorRegistrar(modeloRegistrar,this);
         VistaRegistrar vistaRegistrar = new VistaRegistrar(modeloRegistrar,this,controladorRegistrar);

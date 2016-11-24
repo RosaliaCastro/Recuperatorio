@@ -46,5 +46,9 @@ public class VistaPrincipal {
         String miClave = clave.getText().toString();
         return miClave;
     }
+    public void Limpiar(){
+        this.clave.setText("");
+        this.email.setText("");
+    }
 
 }

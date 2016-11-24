@@ -63,7 +63,12 @@ public class VistaRegistrar {
         myEmail = email.getText().toString();
         return myEmail;
     }
-    public void SetLimpiar(){
+    public void Limpiar(){
+        nombre.setText("");
+        apellido.setText("");
+        usuario.setText("");
+        email.setText("");
+        clave.setText("");
 
     }
 }

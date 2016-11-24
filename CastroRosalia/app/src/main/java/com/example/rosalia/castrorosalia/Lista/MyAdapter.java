@@ -1,10 +1,11 @@
-package com.example.rosalia.castrorosalia.Categoria;
+package com.example.rosalia.castrorosalia.Lista;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.rosalia.castrorosalia.Categoria.ModeloCategoria;
 import com.example.rosalia.castrorosalia.R;
 
 import java.util.List;

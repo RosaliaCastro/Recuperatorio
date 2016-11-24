@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.rosalia.castrorosalia.Lista.ControladorLista;
+import com.example.rosalia.castrorosalia.Lista.ListaCategoria;
 import com.example.rosalia.castrorosalia.R;
 
 /**
@@ -53,10 +55,26 @@ public class Categoria extends AppCompatActivity {
         setContentView(R.layout.activity_categoria);
 
         ModeloCategoria modeloCategoria= new ModeloCategoria();
-        ControladorCategoria controladorCategoria = new ControladorCategoria(modeloCategoria);
+        ControladorCategoria controladorCategoria = new ControladorCategoria(modeloCategoria, this);
         VistaCategoria vistaCategoria = new VistaCategoria(modeloCategoria, this, controladorCategoria);
         controladorCategoria.setMiVista(vistaCategoria);
 
 
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        ControladorCategoria control=new ControladorCategoria();
+        if (requestCode == ControladorCategoria.CAMARA){
+            if (resultCode  == this.RESULT_OK){
+                control.cargarFoto();
+
+
+
+
+            }
+
+        }
+
+    }
+
 }

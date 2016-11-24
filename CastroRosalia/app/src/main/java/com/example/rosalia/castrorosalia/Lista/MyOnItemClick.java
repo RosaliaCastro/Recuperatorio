@@ -1,4 +1,4 @@
-package com.example.rosalia.castrorosalia.Categoria;
+package com.example.rosalia.castrorosalia.Lista;
 
 /**
  * Created by Jona on 22/11/2016.

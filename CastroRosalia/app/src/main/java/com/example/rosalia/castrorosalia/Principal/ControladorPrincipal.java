@@ -1,16 +1,21 @@
 package com.example.rosalia.castrorosalia.Principal;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.view.View;
 
-import com.example.rosalia.castrorosalia.Categoria.ListaCategoria;
+import com.example.rosalia.castrorosalia.Lista.ListaCategoria;
+import com.example.rosalia.castrorosalia.MiDialogo;
 import com.example.rosalia.castrorosalia.R;
 import com.example.rosalia.castrorosalia.Registrar.PantallaRegistrar;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
 import java.util.List;
 
 /**
@@ -23,15 +28,16 @@ public class ControladorPrincipal implements View.OnClickListener {
     private Activity miActivity;
     String email;
     String clave;
+    private MiDialogo miDialogo;
     SharedPreferences miPreferences;
     private List<ModeloPrincipal> ListaUser;
-    
 
-    public ControladorPrincipal(ModeloPrincipal modelo, Activity actividad, SharedPreferences preferences, List<ModeloPrincipal> list) {
+    public ControladorPrincipal(ModeloPrincipal modelo, Activity actividad, SharedPreferences preferences, List<ModeloPrincipal> list, MiDialogo myDialogo) {
         miModelo = modelo;
         miActivity = actividad;
         miPreferences = preferences;
         ListaUser=list;
+        miDialogo=myDialogo;
     }
 
     public ControladorPrincipal(VistaPrincipal vista) {
@@ -52,27 +58,34 @@ public class ControladorPrincipal implements View.OnClickListener {
         if (view.getId() == R.id.btnRegistrarme) {
             Intent intent1 = new Intent(miActivity, PantallaRegistrar.class);
             startActivity(intent1);
+            miVista.Limpiar();
         } else if (view.getId() == R.id.btnIngresar && view.getId() == R.id.checkboxRecordar) {
+
                 clave = miVista.traerClave();//obtengo usuario y contraseña. Luego valido que exista.
                 email = miVista.traerEmail();
+
                 if (ConsultarUsuario(email, clave)) {
                     SharedPreferences.Editor editor = miPreferences.edit();//lo guardo, sharedPreferences para recordarlo.
                     editor.putString("password", clave);
                     editor.putString("email", email);
                     editor.commit();
+
                     Intent intent2 = new Intent(miActivity, ListaCategoria.class);//lo paso a la pantalla siguente.
                     startActivity(intent2);
                 } else {
-                    //mensaje de que no existe
+                    miDialogo.show(miActivity.getFragmentManager(),"dialogo");
+                    miVista.Limpiar();
                 }
             } else if (view.getId() == R.id.btnIngresar) {
                     clave = miVista.traerClave();
                     email = miVista.traerEmail();
                     if(ConsultarUsuario(email,clave)){
+                        miVista.Limpiar();
                         Intent intent3 = new Intent(miActivity,ListaCategoria.class);
                         startActivity(intent3);
                     }else{
-                        //mensaje de que no existe
+                        miDialogo.show(miActivity.getFragmentManager(),"dialogo");
+                        miVista.Limpiar();
                     }
                 }
     }
@@ -86,6 +99,5 @@ public class ControladorPrincipal implements View.OnClickListener {
         }
         return respuesta;
     }
-
 }
 

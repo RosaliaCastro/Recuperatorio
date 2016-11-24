@@ -2,10 +2,9 @@ package com.example.rosalia.castrorosalia.Registrar;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.view.View;
 
-import com.example.rosalia.castrorosalia.Categoria.ListaCategoria;
+import com.example.rosalia.castrorosalia.Lista.ListaCategoria;
 import com.example.rosalia.castrorosalia.Principal.PantallaPrincipal;
 import com.example.rosalia.castrorosalia.R;
 
@@ -43,10 +42,11 @@ public class ControladorRegistrar implements View.OnClickListener {
             email=miVista.TraerEmail();
             clave=miVista.TraerClave();
             Registrar(nombre, apellido, usuario,email,clave);
+            miVista.Limpiar();
             Intent pantCat = new Intent(miActivity, ListaCategoria.class);
             startActivity(pantCat);
         }else if(view.getId()== R.id.btnCancelarR){
-
+            miVista.Limpiar();
             Intent volverPrincipal = new Intent(miActivity,PantallaPrincipal.class);
             startActivity(volverPrincipal);
         }
@@ -60,6 +60,10 @@ public class ControladorRegistrar implements View.OnClickListener {
         String password = myClave;
         ModeloRegistrar miMod = new ModeloRegistrar(myNombre, myApellido,myUsuario,myEmail,myClave);
 
+        //Intent datos = new Intent(miActivity, PantallaPrincipal.class);
+        //datos.putExtra("dat1",user);
+        //datos.putExtra("dat2",password);
+        //startActivity(datos);
     }
 }
 

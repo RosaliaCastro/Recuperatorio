@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondo02">
 
     <ImageView
         android:layout_width="60dp"
@@ -23,7 +23,7 @@
             android:id="@+id/txtCategoria"/>
 
         <TextView
-            android:layout_width="180dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:textColor="#1b4be8"
             android:text="@string/categorias"
@@ -32,12 +32,12 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="90dp"
-        android:layout_height="90dp"
+        android:layout_height="60dp"
         android:gravity="center">
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:textColor="#1b4be8"
             android:gravity="center_horizontal"

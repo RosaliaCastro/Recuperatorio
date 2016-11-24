@@ -1,13 +1,19 @@
-package com.example.rosalia.castrorosalia.Categoria;
+package com.example.rosalia.castrorosalia.Lista;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Adapter;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.example.rosalia.castrorosalia.Categoria.Categoria;
+import com.example.rosalia.castrorosalia.Categoria.ModeloCategoria;
 import com.example.rosalia.castrorosalia.R;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +33,7 @@ public class ListaCategoria extends AppCompatActivity implements MyOnItemClick {
         int id = item.getItemId();
         if (id == R.id.opcion1){
             Log.d("Menu","Opcion1");
+
             //cerrar la sesion y envialo a la pantalla principal
 
             return true;
@@ -34,6 +41,7 @@ public class ListaCategoria extends AppCompatActivity implements MyOnItemClick {
         else
         if (id == R.id.opcion2){
             Log.d("Menu","Opcion2");
+
             //mostrar la lista filtrada por favoritos.
             return true;
         }
@@ -57,16 +65,16 @@ public class ListaCategoria extends AppCompatActivity implements MyOnItemClick {
 
         List<ModeloCategoria> modeloCategorias = new ArrayList<ModeloCategoria>();
 
-        modeloCategorias.add(new ModeloCategoria("Categoria 1", "Esta es una breve descrpcion de la categoria"));
-        modeloCategorias.add(new ModeloCategoria("Categoria 2", "Esta es una breve descrpcion de la categoria"));
-        modeloCategorias.add(new ModeloCategoria("Categoria 3", "Esta es una breve descrpcion de la categoria"));
-        modeloCategorias.add(new ModeloCategoria("Categoria 4", "Esta es una breve descrpcion de la categoria"));
-        modeloCategorias.add(new ModeloCategoria("Categoria 5", "Esta es una breve descrpcion de la categoria"));
-        modeloCategorias.add(new ModeloCategoria("Categoria 6", "Esta es una breve descrpcion de la categoria"));
-        modeloCategorias.add(new ModeloCategoria("Categoria 7", "Esta es una breve descrpcion de la categoria"));
-        modeloCategorias.add(new ModeloCategoria("Categoria 8", "Esta es una breve descrpcion de la categoria"));
-        modeloCategorias.add(new ModeloCategoria("Categoria 9", "Esta es una breve descrpcion de la categoria"));
-        modeloCategorias.add(new ModeloCategoria("Categoria 10", "Esta es una breve descrpcion de la categoria"));
+        modeloCategorias.add(new ModeloCategoria("Mamiferos","Animales vertebrados con glándulas mamarias."));
+        modeloCategorias.add(new ModeloCategoria("Aves","Animales vertebrados que pueden volar."));
+        modeloCategorias.add(new ModeloCategoria("Anfibios", "Animales vertebrados que sufren metamorfosis."));
+        modeloCategorias.add(new ModeloCategoria("Reptiles", "Animales vertebrados cubiertos de escamas"));
+        modeloCategorias.add(new ModeloCategoria("Peces", "Animales vertebrados acuaticos"));
+        modeloCategorias.add(new ModeloCategoria("Artropodos", "Animales invertebrados tienen exoesqueleto"));
+        modeloCategorias.add(new ModeloCategoria("Moluscos", "Esta es una breve descrpcion de la categoria"));
+        modeloCategorias.add(new ModeloCategoria("Esponjas", "Esta es una breve descrpcion de la categoria"));
+        modeloCategorias.add(new ModeloCategoria("Celentereos", "Esta es una breve descrpcion de la categoria"));
+        modeloCategorias.add(new ModeloCategoria("Equinodermos", "Esta es una breve descrpcion de la categoria"));
 
         RecyclerView list = (RecyclerView)findViewById(R.id.list_item);
 
@@ -75,22 +83,27 @@ public class ListaCategoria extends AppCompatActivity implements MyOnItemClick {
         RecyclerView.LayoutManager manager = new LinearLayoutManager(this);
         list.setLayoutManager(manager);
         adapter.notifyDataSetChanged();
-        FloatingActionButton fb=(FloatingActionButton)findViewById(R.id.fabAgregar);
-        //escuchar el click del boton agregar y abrir la pantalla de crear categoria.
 
-
+        ModeloLista modeloLista= new ModeloLista();
+        ControladorLista controladorLista = new ControladorLista(modeloLista, this);
+        VistaLista vistaLista = new VistaLista(modeloLista,this,controladorLista);
+        controladorLista.setMiVista(vistaLista);
     }
 
     @Override
     public void onItemClick(int position) {
-        //String dato1;
-        //String dato2;
+        String param1;
+        String param2;
+        ImageView imagen;
+        int posicion= position;
 
-        //Intent  intent = new Intent(this,Categoria.class);
-        //intent.putExtra(dato1,1);
-        //intent.putExtra(dato2,2);
-        //startActivity(intent);
 
+
+
+        //List<ModeloCategoria> myLista;
+
+
+        //Intent panteditar = new Intent();
 
     }
 
